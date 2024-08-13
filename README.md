@@ -24,19 +24,21 @@ To use this project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/John-S1233/mnist-nas-tuning.git
-    cd mnist-nas-tuning
+    git clone https://github.com/John-S1233/MNIST-Neural-Architecture-Search-NAS-with-Keras-Tuner-and-K-Fold-Cross-Validation/NAS.py
     ```
-
 2. Install the required dependencies:
     ```bash
     pip install tensorflow keras keras-tuner matplotlib scikit-learn
     ```
-3. (Optional) Install NVIDIA CUDA toolkit:
+3. Install Python 3.9.0
+
+    https://www.python.org/downloads/release/python-390/
+   
+4. (Optional) Install NVIDIA CUDA toolkit:
 
     https://developer.nvidia.com/cuda-toolkit
 
-3. (Optional) Install NVIDIA CUDnn:
+5. (Optional) Install NVIDIA CUDnn:
 
     https://developer.nvidia.com/cudnn
 
@@ -45,4 +47,4 @@ To use this project, follow these steps:
 To train the model and perform NAS with hyperparameter tuning, run the script `train_model.py`:
 
 ```bash
-python train_model.py
+python NAS.py

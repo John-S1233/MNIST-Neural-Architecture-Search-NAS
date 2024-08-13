@@ -33,13 +33,13 @@ To use this project, follow these steps:
     pip install tensorflow keras keras-tuner matplotlib scikit-learn
     ```
 3. (Optional) Install NVIDIA CUDA toolkit:
-    '''
+
     https://developer.nvidia.com/cuda-toolkit
-    '''
+
 3. (Optional) Install NVIDIA CUDnn:
-    '''
+
     https://developer.nvidia.com/cudnn
-    '''
+
 ## Usage
 
 To train the model and perform NAS with hyperparameter tuning, run the script `train_model.py`:

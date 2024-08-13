@@ -24,7 +24,7 @@ To use this project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/mnist-nas-tuning.git
+    git clone https://github.com/John-S1233/mnist-nas-tuning.git
     cd mnist-nas-tuning
     ```
 

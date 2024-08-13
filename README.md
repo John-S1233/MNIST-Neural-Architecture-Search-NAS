@@ -12,6 +12,7 @@ This repository contains a TensorFlow-based implementation for building and tuni
 
 ## Dataset
 ![image](https://github.com/user-attachments/assets/c93cefb2-0849-4495-acff-fed408f8357f)
+
 The model is trained and tested on the **MNIST dataset**, which is a large database of handwritten digits commonly used for training various image processing systems. The dataset is split into training and test sets:
 - **Training Set**: 60,000 images
 - **Test Set**: 10,000 images

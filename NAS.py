@@ -8,8 +8,8 @@ from sklearn.model_selection import KFold
 import numpy as np
 import os
 import datetime
-import keyboard  # Import keyboard module to detect key presses
-import sys  # Import sys to terminate the program
+import keyboard  
+import sys 
 import shutil
 
 # Ensure TensorFlow uses the GPU
@@ -23,28 +23,24 @@ print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('
 x_train = x_train.astype("float32") / 255.0
 x_test = x_test.astype("float32") / 255.0
 
-# Add a channel dimension to the images (but keep the input shape constant)
 x_train = x_train[..., tf.newaxis]
 x_test = x_test[..., tf.newaxis]
 
-# Initialize lists to store data for plotting
 num_nodes_list = []
 loss_list = []
 
 def build_model(hp):
     model = keras.Sequential()
 
-    # Fixed input shape
     input_shape = (28, 28, 1)
     model.add(layers.InputLayer(input_shape=input_shape))
 
     # Track the number of nodes
     num_nodes = 0
 
-    # Define the possible activation functions
+    # Define activation function search space
     activation = hp.Choice('activation', values=['relu', 'tanh', 'sigmoid', 'selu', 'leaky_relu'])
 
-    # Build a fixed architecture without altering input shape
     for i in range(hp.Int('num_layers', 8, 18)):
         filters = hp.Int(f'filters_{i}', min_value=16, max_value=256, step=32)
         kernel_size = hp.Choice(f'kernel_size_{i}', values=[1, 3, 5, 7, 9, 11, 13])
@@ -52,7 +48,6 @@ def build_model(hp):
         model.add(layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=None, padding='same', kernel_regularizer=keras.regularizers.l2(0.01)))
         model.add(layers.BatchNormalization())
         
-        # Use the chosen activation function
         if activation == 'leaky_relu':
             model.add(layers.LeakyReLU())
         else:
@@ -66,7 +61,6 @@ def build_model(hp):
     model.add(layers.Flatten())
     dense_units = hp.Int('units', min_value=32, max_value=512, step=32)
     
-    # Apply the chosen activation function in the dense layer as well
     model.add(layers.Dense(units=dense_units, activation=activation if activation != 'leaky_relu' else None, kernel_regularizer=keras.regularizers.l2(0.01)))
     
     if activation == 'leaky_relu':
@@ -80,7 +74,7 @@ def build_model(hp):
     # Update the lists
     num_nodes_list.append(num_nodes)
 
-    # Define a hyperparameterized learning rate scheduler with decay steps
+    # Define a hyperparameterized learning rate scheduler
     lr_schedule = keras.optimizers.schedules.ExponentialDecay(
         initial_learning_rate=hp.Float('learning_rate', min_value=1e-4, max_value=1e-2, sampling='LOG'),
         decay_steps=hp.Int('decay_steps', min_value=1000, max_value=10000, step=1000),

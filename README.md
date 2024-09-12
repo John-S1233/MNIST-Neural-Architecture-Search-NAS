@@ -18,6 +18,9 @@ The model is trained and tested on the **MNIST dataset**, which is a large datab
 - **Training Set**: 60,000 images
 - **Test Set**: 10,000 images
 
+## Model Performance
+
+After running 486 trials the program selected the best model, this model was trained for 350 Epochs with a test accuracy of 99.5%.
 ## Installation
 
 To use this project, follow these steps:

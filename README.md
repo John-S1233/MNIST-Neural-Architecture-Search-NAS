@@ -20,7 +20,7 @@ The model is trained and tested on the **MNIST dataset**, which is a large datab
 
 ## Model Performance
 
-After running 486 trials the program selected the best model, this model was trained for 350 Epochs with a test accuracy of 99.5%.
+After running 486 trials the program selected the best model, this model was trained for 350 Epochs with a test accuracy of 99.5%. (within 0.35% of world record)
 ## Installation
 
 To use this project, follow these steps:
